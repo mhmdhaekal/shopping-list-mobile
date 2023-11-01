@@ -5,14 +5,15 @@ class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
 
   final List<ShopItem> items = [
-    ShopItem("Lihat Produk", Icons.checklist),
-    ShopItem("Tambah Produk", Icons.add_shopping_cart),
-    ShopItem("Logout", Icons.logout)
+    ShopItem("Lihat Produk", Icons.checklist, Colors.red),
+    ShopItem("Tambah Produk", Icons.add_shopping_cart, Colors.deepPurple),
+    ShopItem("Logout", Icons.logout, Colors.green)
   ];
   @override
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.indigoAccent,
         title: const Text(
           'Shopping List',
         ),
@@ -61,8 +62,9 @@ class MyHomePage extends StatelessWidget {
 class ShopItem{
   final String name;
   final IconData icon;
+  final MaterialColor color;
 
-  ShopItem(this.name, this.icon);
+  ShopItem(this.name, this.icon, this.color);
 }
 
 class ShopCard extends StatelessWidget {
@@ -73,7 +75,7 @@ class ShopCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.indigo,
+      color: item.color,
       child: InkWell(
         // Area responsive terhadap sentuhan
         onTap: () {
